@@ -2,9 +2,9 @@ bl_info = {
     "name": "Quick Tools",
     "description": "A series of tools and menus to enhance and speed up workflow",
     "author": "Jonathan Williamson",
-    "version": (0, 8),
-    "blender": (2, 6, 8),
-    "location": "View3D - 'Q' key gives a menu in Object, Edit, and Sculpt modes.",
+    "version": (0, 9),
+    "blender": (2, 71, ),
+    "location": "View3D - 'Shift+Q' key gives a menu in Object, Edit, and Sculpt modes.",
     "warning": '',  # used for warning icon and text in addons panel
     "wiki_url": "http://cgcookie.com/blender/docs/quick-tools-documentation/",
     "tracker_url": "https://github.com/CGCookie/quicktools/issues",
@@ -76,11 +76,11 @@ def register():
    kc = bpy.context.window_manager.keyconfigs.addon
    
    # create the mode switch menu hotkey
-   km = kc.keymaps.new(name='3D View', space_type='VIEW_3D')
-   kmi = km.keymap_items.new('wm.call_menu', 'Q', 'PRESS', alt=True)
-   kmi.properties.name = 'mode.switch_menu' 
-   kmi.active = True
-   addon_keymaps.append((km, kmi))
+   #km = kc.keymaps.new(name='3D View', space_type='VIEW_3D')
+   #kmi = km.keymap_items.new('wm.call_menu', 'Q', 'PRESS', alt=True)
+   #kmi.properties.name = 'mode.switch_menu' 
+   #kmi.active = True
+   #addon_keymaps.append((km, kmi))
 
    # create the scene options menu hotkey
    km = kc.keymaps.new(name='3D View', space_type='VIEW_3D')
@@ -92,7 +92,7 @@ def register():
 
    # create the object mode tools menu hotkey
    km = kc.keymaps.new(name='Object Mode')
-   kmi = km.keymap_items.new('wm.call_menu', 'Q', 'PRESS')
+   kmi = km.keymap_items.new('wm.call_menu', 'Q', 'PRESS', shift=True)
    kmi.properties.name = 'object.tools_menu' 
    kmi.active = True
    addon_keymaps.append((km, kmi))
@@ -104,14 +104,14 @@ def register():
 
    # create the object mode Display menu hotkey
    km = kc.keymaps.new(name='3D View', space_type='VIEW_3D')
-   kmi = km.keymap_items.new('wm.call_menu', 'Q', 'PRESS', shift=True)
+   kmi = km.keymap_items.new('wm.call_menu', 'Q', 'PRESS', alt=True)
    kmi.properties.name = 'object.display_options'
    kmi.active = True
    addon_keymaps.append((km, kmi))
 
    # create the edit mode tools menu hotkey
    km = kc.keymaps.new(name='Mesh')
-   kmi = km.keymap_items.new('wm.call_menu', 'Q', 'PRESS')
+   kmi = km.keymap_items.new('wm.call_menu', 'Q', 'PRESS', alt=True)
    kmi.properties.name = 'mesh.tools_menu'
    kmi.active = True
    addon_keymaps.append((km, kmi))
@@ -123,12 +123,12 @@ def register():
    
    # create the sculpt mode tools menu hotkey
    km = kc.keymaps.new(name='Sculpt')
-   kmi = km.keymap_items.new('wm.call_menu', 'Q', 'PRESS')
+   kmi = km.keymap_items.new('wm.call_menu', 'Q', 'PRESS', shift=True)
    kmi.properties.name = 'sculpt.tools_menu'
    kmi.active = True
    addon_keymaps.append((km, kmi))
 
-   kmi = km.keymap_items.new('wm.call_menu', 'W', 'PRESS')
+   kmi = km.keymap_items.new('wm.call_menu', 'W', 'PRESS', alt=True)
    kmi.properties.name = 'sculpt.brush_settings_menu'
    kmi.active = True
    addon_keymaps.append((km, kmi))
